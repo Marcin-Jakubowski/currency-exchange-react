@@ -1,43 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Form from "./Form";
+import Header from "./Header";
+import Section from "./Section";
+import Container from "./Container";
 
 function App() {
+
+  const [finalResult, setFinalResult] = useState("");
+  const PLN_rate = 1;
+  const EUR_rate = 4.4771;
+  const USD_rate = 3.9177;
+  const calculateResult = (amount, actualCurrency, expectedCurrency) => {
+    let PLNAmount = "";
+    let expectedAmount = "";
+    switch (actualCurrency) {
+      case "PLN":
+        PLNAmount = amount * PLN_rate;
+        break;
+      case "EUR":
+        PLNAmount = amount * EUR_rate;
+        break;
+      case "USD":
+        PLNAmount = amount * USD_rate;
+        break;
+    }
+
+    switch (expectedCurrency) {
+      case "PLN":
+        expectedAmount = PLNAmount / PLN_rate;
+        break;
+      case "EUR":
+        expectedAmount = PLNAmount / EUR_rate;
+        break;
+      case "USD":
+        expectedAmount = PLNAmount / USD_rate;
+        break;
+    }
+    setFinalResult(expectedAmount);
+  };
   return (
-    <main className="container">
-    <h1 className="header">Kantor wymiany walut</h1>
-    <div className="section">
-        <form className="form">
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Wypełnij dane:</legend>
-
-
-                    <label className="form__label">
-                        <span className="form__text">Podaj kwotę: </span><input name="amount" value="" required type="number" step="0.01" min="5" max="10000000" autofocus />
-                    </label>
-
-                    <label className="form__label">
-                        <span className="form__text">Podaj walutę początkową: </span><select name="actualCurrency">
-                            <option value="PLN">PLN</option>
-                            <option value="EUR">Euro</option>
-                            <option value="USD">Dolar amerykański</option>
-                        </select>
-                    </label>
-
-                    <label className="form__label">
-                        <span className="form__text">Podaj walutę końcową: </span><select name="expectedCurrency">
-                            <option value="PLN">PLN</option>
-                            <option value="EUR">Euro</option>
-                            <option value="USD">Dolar amerykański</option>
-                        </select>
-                    </label>
-
-                <button className="form__button">Przelicz</button>
-
-            </fieldset>
-        </form>
-        <p className="section__paragraph">Otrzymasz: <strong>N/a</strong></p>
-        
-    </div>
-</main>
+    <Container>
+      <Header />
+      <Section
+        finalResult={+finalResult}
+        body={<Form calculateResult={calculateResult} />}
+      />
+    </Container>
   );
 }
 
