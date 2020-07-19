@@ -1,11 +1,10 @@
 import React from "react";
-import "./style.css"
+import "./style.css";
 
-const Container = ({children}) => (
+const Container = ({ children }) => (
     <main className="container">
-    {children}
-</main>
+        {children}
+    </main>
 );
-
 
 export default Container;

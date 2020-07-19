@@ -5,7 +5,6 @@ import Section from "./Section";
 import Container from "./Container";
 
 function App() {
-
   const [finalResult, setFinalResult] = useState("");
   const PLN_rate = 1;
   const EUR_rate = 4.4771;
@@ -38,6 +37,7 @@ function App() {
     }
     setFinalResult(expectedAmount);
   };
+
   return (
     <Container>
       <Header />

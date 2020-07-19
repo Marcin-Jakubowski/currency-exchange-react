@@ -3,8 +3,6 @@
     color: #fff;
 }
 
-
-
 .form__text {
     display: inline-block;
     width: 250px;
@@ -23,7 +21,6 @@
     background-color: #0353A4;
     padding: 10px;
     border-radius: 10px;
-    
     border: 2px solid #979DAC;
 }
 
@@ -38,7 +35,6 @@
     .form__label {
         grid-template-columns: 400px;
     }
-
 }
 
 .form__button {
