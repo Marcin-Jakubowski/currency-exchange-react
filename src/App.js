@@ -6,44 +6,32 @@ import Container from "./Container";
 
 function App() {
   const [finalResult, setFinalResult] = useState("");
-  const PLN_rate = 1;
-  const EUR_rate = 4.4771;
-  const USD_rate = 3.9177;
-  const calculateResult = (amount, actualCurrency, expectedCurrency) => {
-    let PLNAmount = "";
-    let expectedAmount = "";
-    switch (actualCurrency) {
-      case "PLN":
-        PLNAmount = amount * PLN_rate;
-        break;
-      case "EUR":
-        PLNAmount = amount * EUR_rate;
-        break;
-      case "USD":
-        PLNAmount = amount * USD_rate;
-        break;
-    }
 
-    switch (expectedCurrency) {
-      case "PLN":
-        expectedAmount = PLNAmount / PLN_rate;
-        break;
-      case "EUR":
-        expectedAmount = PLNAmount / EUR_rate;
-        break;
-      case "USD":
-        expectedAmount = PLNAmount / USD_rate;
-        break;
-    }
-    setFinalResult(expectedAmount);
+  const currencies = [
+    { name: "PLN", value: 1 },
+    { name: "EUR", value: 4.4771 },
+    { name: "USD", value: 3.9177 },
+  ];
+
+  const calculateResult = (amount, currentCurrency, expectedCurrency) => {
+    const expectedCurrencyName = currencies.find(currency =>
+      currency.value === expectedCurrency).name;
+    setFinalResult(
+      `${(amount * currentCurrency / expectedCurrency).toFixed(2)} ${expectedCurrencyName}`
+    );
   };
 
   return (
     <Container>
       <Header />
       <Section
-        finalResult={+finalResult}
-        body={<Form calculateResult={calculateResult} />}
+        finalResult={finalResult}
+        body={
+          <Form
+            calculateResult={calculateResult}
+            currencies={currencies}
+          />
+        }
       />
     </Container>
   );

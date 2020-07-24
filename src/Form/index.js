@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const Form = ({ calculateResult }) => {
+const Form = ({ calculateResult, currencies }) => {
     const [amount, setAmount] = useState("");
-    const [actualCurrency, setActualCurrency] = useState("");
+    const [currentCurrency, setCurrentCurrency] = useState("");
     const [expectedCurrency, setExpectedCurrency] = useState("");
+
+    const generateOptions = currencies.map(({ name, value }) => {
+        return <option key={name} value={value}>{name}</option>
+    });
+
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(+amount, actualCurrency, expectedCurrency);
+        calculateResult(+amount, +currentCurrency, +expectedCurrency);
         setAmount("");
     }
 
     return (
-        <form className="form" onSubmit={onFormSubmit} >
+        <form className="form" onSubmit={onFormSubmit}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Wypełnij dane:</legend>
                 <label className="form__label">
@@ -31,13 +36,11 @@ const Form = ({ calculateResult }) => {
                 <label className="form__label">
                     <span className="form__text">Podaj walutę początkową: </span>
                     <select
-                        onChange={({ target }) => setActualCurrency(target.value)}
-                        value={actualCurrency}
+                        onChange={({ target }) => setCurrentCurrency(target.value)}
+                        value={currentCurrency}
                     >
                         <option></option>
-                        <option>PLN</option>
-                        <option>EUR</option>
-                        <option>USD</option>
+                        {generateOptions}
                     </select>
                 </label>
                 <label className="form__label">
@@ -47,9 +50,7 @@ const Form = ({ calculateResult }) => {
                         value={expectedCurrency}
                     >
                         <option></option>
-                        <option>PLN</option>
-                        <option>EUR</option>
-                        <option>USD</option>
+                        {generateOptions}
                     </select>
                 </label>
                 <button className="form__button">Przelicz</button>
