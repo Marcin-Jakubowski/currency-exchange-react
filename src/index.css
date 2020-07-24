@@ -7,5 +7,7 @@ html {
 }
 
 body {
-  background-color: #0466C8;
+  background-image: url("./backgroundImage.jpg");
+  background-color: #ccc;
+  background-size: cover;
 }
