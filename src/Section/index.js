@@ -3,9 +3,9 @@ import "./style.css";
 
 const Section = ({ body, finalResult }) => (
     <div className="section">
-        {body};
+        {body}
         <p className="section__paragraph">
-            Otrzymasz: <strong>{finalResult.toFixed(2)}</strong>
+            Otrzymasz: <strong>{finalResult}</strong>
         </p>
     </div>
 );
