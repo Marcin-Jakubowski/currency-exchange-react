@@ -23,7 +23,9 @@ const DateBox = () => {
         };
     }, []);
 
-    return (<p className="dateBox">Dzisiaj jest {currentDate}</p>);
+    return (
+        <p className="dateBox">Dzisiaj jest {currentDate}</p>
+    );
 };
 
 export default DateBox;

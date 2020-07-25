@@ -25,7 +25,7 @@ function App() {
   return (
     <Container>
       <Header
-        body = {<DateBox />}
+        body={<DateBox />}
       />
       <Section
         finalResult={finalResult}
