@@ -1,8 +1,12 @@
 .header {
     text-align: center;
     background-color: #0353A4;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-radius: 10px;
     border: 2px solid #979DAC;
     max-width: 500px;
+}
+
+.header__paragraph {
+    margin: 5px 5px 20px;
 }
