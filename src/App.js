@@ -3,7 +3,6 @@ import Form from "./Form";
 import Header from "./Header";
 import Section from "./Section";
 import Container from "./Container";
-import DateBox from './DateBox';
 
 function App() {
   const [finalResult, setFinalResult] = useState("");
@@ -24,9 +23,7 @@ function App() {
 
   return (
     <Container>
-      <Header
-        body={<DateBox />}
-      />
+      <Header />
       <Section
         finalResult={finalResult}
         body={
