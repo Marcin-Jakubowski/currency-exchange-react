@@ -10,3 +10,10 @@
 .header__paragraph {
     margin: 5px 5px 20px;
 }
+
+.header__date {
+    font-family: 'Inconsolata', monospace;
+    text-align: end;
+    margin: 0;
+    font-size: 13px;
+}
