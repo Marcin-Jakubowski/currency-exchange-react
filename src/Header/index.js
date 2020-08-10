@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useCurrentDate from "./useCurrentDate";
 import "./style.css";
 
 const dateFormat = {
@@ -12,22 +13,11 @@ const dateFormat = {
 };
 
 const Header = () => {
-    const [currentDate, setCurrentDate] = useState(new Date());
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            const myDate = new Date();
-            setCurrentDate(myDate);
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    });
+const date = useCurrentDate();
 
     return (
         <div className="header">
-            <p className="header__date">Dzisiaj jest {currentDate.toLocaleDateString(undefined, dateFormat)}</p>
+            <p className="header__date">Dzisiaj jest {date.toLocaleDateString(undefined, dateFormat)}</p>
             <h1 className="header__paragraph">Kantor wymiany walut</h1>
         </div>
     )
