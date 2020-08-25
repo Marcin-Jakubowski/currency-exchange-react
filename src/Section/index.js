@@ -1,13 +1,13 @@
 import React from "react";
-import "./style.css";
+import { Container, Content } from "./styled";
 
 const Section = ({ body, finalResult }) => (
-    <div className="section">
+    <Container>
         {body}
-        <p className="section__paragraph">
+        <Content>
             Otrzymasz: <strong>{finalResult}</strong>
-        </p>
-    </div>
+        </Content>
+    </Container>
 );
 
 export default Section;
