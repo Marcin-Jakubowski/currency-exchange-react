@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import { FormItem, Fieldset, Legend, Label, Content, Button } from "./styled"
 
 const Form = ({ calculateResult, currencies }) => {
     const [amount, setAmount] = useState("");
@@ -17,11 +17,11 @@ const Form = ({ calculateResult, currencies }) => {
     }
 
     return (
-        <form className="form" onSubmit={onFormSubmit}>
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Wypełnij dane:</legend>
-                <label className="form__label">
-                    <span className="form__text">Podaj kwotę: </span>
+        <FormItem onSubmit={onFormSubmit}>
+            <Fieldset>
+                <Legend>Wypełnij dane:</Legend>
+                <Label>
+                    <Content>Podaj kwotę: </Content>
                     <input
                         value={amount}
                         required
@@ -32,9 +32,9 @@ const Form = ({ calculateResult, currencies }) => {
                         autoFocus
                         onChange={({ target }) => setAmount(target.value)}
                     />
-                </label>
-                <label className="form__label">
-                    <span className="form__text">Podaj walutę początkową: </span>
+                </Label>
+                <Label>
+                    <Content>Podaj walutę początkową: </Content>
                     <select
                         onChange={({ target }) => setCurrentCurrency(target.value)}
                         value={currentCurrency}
@@ -42,9 +42,9 @@ const Form = ({ calculateResult, currencies }) => {
                         <option></option>
                         {generateOptions}
                     </select>
-                </label>
-                <label className="form__label">
-                    <span className="form__text">Podaj walutę końcową: </span>
+                </Label>
+                <Label>
+                    <Content>Podaj walutę końcową: </Content>
                     <select
                         onChange={({ target }) => setExpectedCurrency(target.value)}
                         value={expectedCurrency}
@@ -52,10 +52,10 @@ const Form = ({ calculateResult, currencies }) => {
                         <option></option>
                         {generateOptions}
                     </select>
-                </label>
-                <button className="form__button">Przelicz</button>
-            </fieldset>
-        </form>
+                </Label>
+                <Button>Przelicz</Button>
+            </Fieldset>
+        </FormItem>
     );
 };
 
