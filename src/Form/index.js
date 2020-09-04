@@ -6,8 +6,8 @@ const Form = ({ calculateResult, currencies }) => {
     const [currentCurrency, setCurrentCurrency] = useState("");
     const [expectedCurrency, setExpectedCurrency] = useState("");
 
-    const generateOptions = currencies.map(({ name, value }) => {
-        return <option key={name} value={value}>{name}</option>
+    const generateOptions = Object.keys(currencies).map((currency) => {
+        return <option key={currency} value={currencies[currency]}>{currency}</option>
     });
 
     const onFormSubmit = (event) => {

@@ -3,19 +3,24 @@ import Form from "./Form";
 import Header from "./Header";
 import Section from "./Section";
 import Container from "./Container";
+import axios from "axios";
 
 function App() {
   const [finalResult, setFinalResult] = useState("");
 
-  const currencies = [
-    { name: "PLN", value: 1 },
-    { name: "EUR", value: 4.4771 },
-    { name: "USD", value: 3.9177 },
-  ];
+  const currencies = {
+    "PLN": 1,
+    "EUR": 4.4771,
+    "USD": 3.9177,
+  };
+
+  // axios.get("https://api.exchangeratesapi.io/latest?base=PLN")
+  //   .then(response => response.data=currencies)
+  //   .catch(error => console.error(error));
 
   const calculateResult = (amount, currentCurrency, expectedCurrency) => {
-    const expectedCurrencyName = currencies.find(currency =>
-      currency.value === expectedCurrency).name;
+    const expectedCurrencyName = Object.keys(currencies).find(currency =>
+      currencies[currency] === expectedCurrency);
     setFinalResult(
       `${(amount * currentCurrency / expectedCurrency).toFixed(2)} ${expectedCurrencyName}`
     );
