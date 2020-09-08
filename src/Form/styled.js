@@ -51,3 +51,7 @@ export const Button = styled.button`
         background-image: radial-gradient(hsl(210, 96%, 75%), #001233);
     }
 `;
+
+export const DataInfo = styled.p`
+    font-size: 12px;
+`;
