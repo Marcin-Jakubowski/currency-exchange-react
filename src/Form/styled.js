@@ -55,3 +55,12 @@ export const Button = styled.button`
 export const DataInfo = styled.p`
     font-size: 12px;
 `;
+
+export const ImportInfo = styled.p`
+    text-align: center;
+    background-color: #002855;
+    border-radius: 20px;
+    border: 2px solid #979DAC;
+    box-shadow: 0 0 10px #33415C;
+    padding: 15px;
+`;
