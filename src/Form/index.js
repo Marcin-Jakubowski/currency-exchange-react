@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import { FormItem, Fieldset, Legend, Label, Content, Button } from "./styled"
+import { FormItem, Fieldset, Legend, Label, Content, Button, DataInfo } from "./styled"
 
-const Form = ({ calculateResult, currencies }) => {
+const Form = ({ calculateResult, ratesData }) => {
     const [amount, setAmount] = useState("");
     const [currentCurrency, setCurrentCurrency] = useState("");
     const [expectedCurrency, setExpectedCurrency] = useState("");
 
-    const generateOptions = Object.keys(currencies).map((currency) => {
-        return <option key={currency} value={currencies[currency]}>{currency}</option>
+    const generateOptions = ratesData === undefined || Object.keys(ratesData.rates).map((rate) => {
+        return <option key={rate} value={ratesData.rates[rate]} > {rate}</option >
     });
 
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculateResult(+amount, +currentCurrency, +expectedCurrency);
-        setAmount("");
     }
 
-    return (
+    return ratesData === undefined || (
         <FormItem onSubmit={onFormSubmit}>
             <Fieldset>
                 <Legend>Wypełnij dane:</Legend>
@@ -54,9 +53,10 @@ const Form = ({ calculateResult, currencies }) => {
                     </select>
                 </Label>
                 <Button>Przelicz</Button>
+                <DataInfo>Kursy walut pobierane są z Europejskiego Banku Centralnego.</DataInfo>
+                <DataInfo>Aktualne na dzień: {ratesData === undefined || ratesData.date}</DataInfo>
             </Fieldset>
-        </FormItem>
-    );
+        </FormItem>)
 };
 
 
