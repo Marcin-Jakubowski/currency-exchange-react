@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { FormItem, Fieldset, Legend, Label, Content, Button, DataInfo, ImportInfo } from "./styled"
+import {
+    FormItem,
+    Fieldset,
+    Legend,
+    Label,
+    Content,
+    Button,
+    DataInfo,
+    ImportInfo
+} from "./styled";
 
 const Form = ({ calculateResult, ratesData }) => {
     const [amount, setAmount] = useState("");
@@ -7,13 +16,13 @@ const Form = ({ calculateResult, ratesData }) => {
     const [expectedCurrency, setExpectedCurrency] = useState("");
 
     const generateOptions = ratesData === undefined || Object.keys(ratesData.rates).map((rate) => {
-        return <option key={rate} value={ratesData.rates[rate]} > {rate}</option >
+        return <option key={rate} value={ratesData.rates[rate]}> {rate}</option>
     });
 
     const onFormSubmit = (event) => {
         event.preventDefault();
         calculateResult(+amount, +currentCurrency, +expectedCurrency);
-    }
+    };
 
     return ratesData === undefined
         ? <ImportInfo>Trwa pobieranie aktualnych kursów walut.</ImportInfo>
